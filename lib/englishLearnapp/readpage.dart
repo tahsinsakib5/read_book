@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart'as stt;
+import 'package:testprovider/englishLearnapp/allvocavolary.dart';
 import 'package:testprovider/englishLearnapp/data.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:testprovider/englishLearnapp/homepage.dart';
+import 'package:testprovider/englishLearnapp/vocavolary.dart';
 import 'package:translator/translator.dart';
+import 'package:hive/hive.dart';
 
 class ReadPage extends StatefulWidget {
-  ReadPage({super.key});
+ final String story;
+  ReadPage({super.key, required this.story});
 
   @override
   State<ReadPage> createState() => _ReadPageState();
@@ -14,6 +19,24 @@ class ReadPage extends StatefulWidget {
    final stt.SpeechToText _speech = stt.SpeechToText();
    final FlutterTts flutterTts = FlutterTts();
    final GoogleTranslator translator = GoogleTranslator();
+
+  final mybox = Hive.box("my_box");
+
+   void putdata (){
+   
+
+   
+
+     
+   }
+
+    void getdata (){
+   var data=  mybox.get(1);
+
+   print(data);
+
+     
+   }
 
 class _ReadPageState extends State<ReadPage> {
   int value = 17;
@@ -44,25 +67,33 @@ class _ReadPageState extends State<ReadPage> {
               },
               child: Icon(Icons.remove),
             ),
+
+             FloatingActionButton(
+              onPressed: () {
+               Navigator.push(context,MaterialPageRoute(builder: (context) => Vocavolary(),));
+              },
+              child: Icon(Icons.remove),
+            ),
+             FloatingActionButton(
+              onPressed: () {
+               Navigator.push(context,MaterialPageRoute(builder: (context) => allvocavolary(),));
+              },
+              child: Icon(Icons.remove),
+            ),
           ],
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: moralStory.length,
-                itemBuilder: (context, index) {
-                  List<String> words = moralStory[index].split(' ');
-                  return Padding(
+          child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Wrap(
                       spacing: 8.0,
-                      children: words.map((word) {
+                       
+                      children: widget.story.split(' ').map((word) {
                         return GestureDetector(
-                          onTap: ()async{
+                          onTap: (){
+                            trans(word);
                             _showVocabularyAlert(context, word);
-                         await trans(word);
+                         
                           },
                           child: Text(
                             word,
@@ -71,11 +102,7 @@ class _ReadPageState extends State<ReadPage> {
                         );
                       }).toList(),
                     ),
-                  );
-                },
-              ),
-            ],
-          ),
+                  ),
         ),
       ),
     );
@@ -110,20 +137,29 @@ class _ReadPageState extends State<ReadPage> {
           
           actions: [
             TextButton(
-              onPressed: () {
+              onPressed: ()async{
+                getdata();
                 Navigator.of(context).pop();
                
               },
               child: Text("Close"),
             ),
-
-            TextButton(
-              onPressed: () {
-                print(vocabulary);
-                print(outeope);
-              },
-              child: Text("save"),
-            ),
+             
+             TextButton(
+                onPressed: () {
+             
+                  var data=  mybox.put(3, {
+                 "word":vocabulary,
+                  "mean":outeope
+                 });
+             
+                   
+                  // print(vocabulary);
+                  // print(outeope);
+                },
+                child: Text("save"),
+              ),
+          
           ],
         );
       },
