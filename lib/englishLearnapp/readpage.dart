@@ -1,15 +1,17 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart'as stt;
 import 'package:testprovider/englishLearnapp/allvocavolary.dart';
 import 'package:testprovider/englishLearnapp/data.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:testprovider/englishLearnapp/homepage.dart';
+
 import 'package:testprovider/englishLearnapp/vocavolary.dart';
 import 'package:translator/translator.dart';
 import 'package:hive/hive.dart';
 
 class ReadPage extends StatefulWidget {
- final String story;
+ final storys story;
   ReadPage({super.key, required this.story});
 
   @override
@@ -26,10 +28,10 @@ class ReadPage extends StatefulWidget {
    
 
    
-
+ 
      
    }
-
+        var allword = Hive.box("my_folder");
     void getdata (){
    var data=  mybox.get(1);
 
@@ -88,10 +90,10 @@ class _ReadPageState extends State<ReadPage> {
                     child: Wrap(
                       spacing: 8.0,
                        
-                      children: widget.story.split(' ').map((word) {
+                      children: widget.story.story.split(' ').map((word) {
                         return GestureDetector(
-                          onTap: (){
-                            trans(word);
+                          onTap: ()async{
+                          await  trans(word);
                             _showVocabularyAlert(context, word);
                          
                           },
@@ -147,6 +149,24 @@ class _ReadPageState extends State<ReadPage> {
              
              TextButton(
                 onPressed: () {
+           
+                  
+     var dataExists = allword.values.any((element) =>
+      element == widget.story.storyName);
+
+                   
+    if (!dataExists) {
+      allword.add(widget.story.storyName);
+      print(allword.get(1));
+      print("data save");
+    }else{
+      print("dont save");
+      print(allword.get(1));
+    }
+   
+  
+
+    
              
                   var data=  mybox.add({
                  "word":vocabulary,
@@ -155,8 +175,8 @@ class _ReadPageState extends State<ReadPage> {
                  });
              
                    
-                  // print(vocabulary);
-                  // print(outeope);
+                  print(vocabulary);
+                  print(outeope);
                 },
                 child: Text("save"),
               ),
@@ -185,3 +205,4 @@ class _ReadPageState extends State<ReadPage> {
   }
 
 }
+

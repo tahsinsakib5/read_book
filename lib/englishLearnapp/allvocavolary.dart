@@ -34,7 +34,7 @@ class _allvocavolaryState extends State<allvocavolary> {
           ),
 
         //   ElevatedButton(onPressed: () {
-        //   var word=  allword.put(1, "Molla nasir uddin");
+        //   var word=  allword.put(2, "Molla nasir uddin");
          
         //  setState(() {
            
@@ -43,8 +43,7 @@ class _allvocavolaryState extends State<allvocavolary> {
 
 
         //   ElevatedButton(onPressed: () {
-       
-         
+      
         //   print(allword.get(1));
         //   }, child: Text("salib"))
         ],

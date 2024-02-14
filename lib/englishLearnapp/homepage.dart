@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:testprovider/englishLearnapp/data.dart';
 import 'package:testprovider/englishLearnapp/readpage.dart';
+import 'package:testprovider/englishLearnapp/secondpage.dart';
+import 'package:testprovider/secondhomepage.dart';
 
 class HomePageReadBook extends StatefulWidget {
   const HomePageReadBook({super.key});
@@ -14,6 +16,7 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+       
         appBar: AppBar(),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -23,7 +26,7 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
            child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
              return   InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ReadPage(story: allstory[index]),));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Secondpagepageread(allstory: allstory)));
               },
                child: Padding(
                  padding: const EdgeInsets.all(8.0),

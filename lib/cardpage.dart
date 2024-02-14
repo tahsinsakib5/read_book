@@ -5,8 +5,18 @@ class Shopepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor:Colors.amber,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor:Colors.amber,
+      
+        body: Column(
+          children: [
+           ElevatedButton(onPressed: () {
+             PopupMenuItem(child: Text("sakib"),);
+           }, child:Text("save"))
+          ],
+        ),
+      ),
     );
   }
 }
