@@ -148,9 +148,10 @@ class _ReadPageState extends State<ReadPage> {
              TextButton(
                 onPressed: () {
              
-                  var data=  mybox.put(3, {
+                  var data=  mybox.add({
                  "word":vocabulary,
-                  "mean":outeope
+                  "mean":outeope,
+                  "time":DateTime.now()
                  });
              
                    

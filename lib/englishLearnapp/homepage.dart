@@ -36,6 +36,52 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
              );
            },),
          ),
+
+         Text("Akbar Story"),
+
+          Container(
+          height: 170,
+           child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
+             return   InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ReadPage(story: allstory[index]),));
+              },
+               child: Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Container(
+                   
+                            
+                   child: Image.asset("assets/story.jpg",fit: BoxFit.cover,),
+                  ),
+               ),
+             );
+           },),
+         ),
+          
+          
+              Text("Akbar Story"),
+
+
+           
+
+          Container(
+          height: 170,
+           child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
+             return   InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ReadPage(story: allstory[index]),));
+              },
+               child: Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Container(
+                   
+                            
+                   child: Image.asset("assets/akbar.jpg",fit: BoxFit.cover,),
+                  ),
+               ),
+             );
+           },),
+         ),
       
           Expanded(child: Container())
           ],
