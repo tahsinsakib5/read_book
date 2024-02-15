@@ -19,11 +19,11 @@ class _BontonnavigationreadState extends State<Bontonnavigationread> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       bottomNavigationBar: BottomNavigationBar(items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home),label:"Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.book),label: "Vocavolary"),
-          BottomNavigationBarItem(icon: Icon(Icons.book_outlined),label: "seting"),
-          BottomNavigationBarItem(icon: Icon(Icons.book_outlined),label: "seting")
+       bottomNavigationBar: BottomNavigationBar(backgroundColor:Colors.pink,items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.pink,),label:"Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.book,color: Colors.pink,),label: "Vocavolary"),
+          BottomNavigationBarItem(icon: Icon(Icons.book_outlined,color: Colors.pink,),label: "seting"),
+          BottomNavigationBarItem(icon: Icon(Icons.book_outlined,color: Colors.pink,),label: "seting")
         ],
          onTap: (index) {
           setState(() {
