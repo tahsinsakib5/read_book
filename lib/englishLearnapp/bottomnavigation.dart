@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testprovider/englishLearnapp/allvocavolary.dart';
 import 'package:testprovider/englishLearnapp/homepage.dart';
+import 'package:testprovider/englishLearnapp/stingpage.dart';
 import 'package:testprovider/englishLearnapp/vocavolary.dart';
 
 class Bontonnavigationread extends StatefulWidget {
@@ -11,7 +12,7 @@ class Bontonnavigationread extends StatefulWidget {
 }
 
 class _BontonnavigationreadState extends State<Bontonnavigationread> {
-  List pages =[HomePageReadBook(),Vocavolary(),allvocavolary()];
+  List pages =[HomePageReadBook(),Vocavolary(),allvocavolary(),Setingpage()];
 
  int curentindex =0;
 
@@ -21,6 +22,7 @@ class _BontonnavigationreadState extends State<Bontonnavigationread> {
        bottomNavigationBar: BottomNavigationBar(items: [
           BottomNavigationBarItem(icon: Icon(Icons.home),label:"Home"),
           BottomNavigationBarItem(icon: Icon(Icons.book),label: "Vocavolary"),
+          BottomNavigationBarItem(icon: Icon(Icons.book_outlined),label: "seting"),
           BottomNavigationBarItem(icon: Icon(Icons.book_outlined),label: "seting")
         ],
          onTap: (index) {

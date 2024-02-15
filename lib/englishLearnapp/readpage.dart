@@ -1,10 +1,12 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:popover/popover.dart';
 import 'package:speech_to_text/speech_to_text.dart'as stt;
 import 'package:testprovider/englishLearnapp/allvocavolary.dart';
 import 'package:testprovider/englishLearnapp/data.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:testprovider/englishLearnapp/pactis.dart';
 
 import 'package:testprovider/englishLearnapp/vocavolary.dart';
 import 'package:translator/translator.dart';
@@ -76,12 +78,7 @@ class _ReadPageState extends State<ReadPage> {
               },
               child: Icon(Icons.remove),
             ),
-             FloatingActionButton(
-              onPressed: () {
-               Navigator.push(context,MaterialPageRoute(builder: (context) => allvocavolary(),));
-              },
-              child: Icon(Icons.remove),
-            ),
+            
           ],
         ),
         body: SingleChildScrollView(
@@ -94,7 +91,9 @@ class _ReadPageState extends State<ReadPage> {
                         return GestureDetector(
                           onTap: ()async{
                           await  trans(word);
-                            _showVocabularyAlert(context, word);
+                            
+
+              _showVocabularyAlert(context, word);
                          
                           },
                           child: Text(
@@ -203,6 +202,10 @@ class _ReadPageState extends State<ReadPage> {
     
     await flutterTts.speak(text);
   }
+
+
+
+  
 
 }
 

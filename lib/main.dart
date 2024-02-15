@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:popover/popover.dart';
 import 'package:testprovider/englishLearnapp/bottomnavigation.dart';
 import 'package:testprovider/englishLearnapp/homepage.dart';
+import 'package:testprovider/englishLearnapp/pactis.dart';
+import 'package:testprovider/englishLearnapp/readpage.dart';
 
 
 
@@ -23,7 +26,7 @@ void main()async{
 
   var box = await Hive.openBox("my_box");
  var boxtow=  await Hive.openBox("my_folder");
-  runApp(const MyApp());
+  runApp(MyApp());
 }
  class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -31,12 +34,19 @@ void main()async{
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(create:(context) => Countprovider(),child: MaterialApp(
-      home:Bontonnavigationread(),
+      debugShowCheckedModeBanner: false,
+      home:Scaffold(
+        body: Center(
+          child:Bontonnavigationread(),
+        ),
+      ),
     ),);
     
    
   }
 }
+
+
 
 
 

@@ -17,77 +17,158 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
     return SafeArea(
       child: Scaffold(
        
-        appBar: AppBar(),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-         Container(
-          height: 170,
-           child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
-             return   InkWell(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Secondpagepageread(allstory: allstory)));
-              },
-               child: Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: Container(
-                   
-                            
-                   child: Image.asset("assets/molla.jpg",fit: BoxFit.cover,),
-                  ),
-               ),
-             );
-           },),
-         ),
+        appBar: AppBar(backgroundColor: Colors.pink,),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Akbar Story",style: TextStyle(fontSize:20),),
 
-         Text("Akbar Story"),
-
-          Container(
-          height: 170,
-           child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
-             return   InkWell(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ReadPage(story: allstory[index]),));
-              },
-               child: Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: Container(
-                   
-                            
-                   child: Image.asset("assets/story.jpg",fit: BoxFit.cover,),
-                  ),
-               ),
-             );
-           },),
-         ),
+                    MaterialButton(onPressed: () {
+                      
+                    },child: Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 222, 221, 221),
+                        borderRadius: BorderRadius.circular(5)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 7),
+                        child: Text("See All"),
+                      ),
+                    ),)
+                  ],
+                ),
           
+           Container(
+            height:180,
+             child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
+               return   InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Secondpagepageread(allstory: allstory)));
+                },
+                 child: Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Container(
+                     
+                              
+                     child: Image.asset("assets/molla.jpg",fit: BoxFit.cover,),
+                    ),
+                 ),
+               );
+             },),
+           ),
           
-              Text("Akbar Story"),
-
-
            
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Akbar Story",style: TextStyle(fontSize:20),),
 
-          Container(
-          height: 170,
-           child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
-             return   InkWell(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ReadPage(story: allstory[index]),));
-              },
-               child: Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: Container(
-                   
-                            
-                   child: Image.asset("assets/akbar.jpg",fit: BoxFit.cover,),
-                  ),
-               ),
-             );
-           },),
-         ),
-      
-          Expanded(child: Container())
-          ],
+                    MaterialButton(onPressed: () {
+                      
+                    },child: Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 222, 221, 221),
+                        borderRadius: BorderRadius.circular(5)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 7),
+                        child: Text("See All"),
+                      ),
+                    ),)
+                  ],
+                ),
+          
+          
+            Container(
+            height: 200,
+            
+             child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
+               return 
+                  
+                   Column(
+                     children: [
+                       InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ReadPage(story: allstory[index]),));
+                        },
+                         child: Padding(
+                           padding: const EdgeInsets.all(8.0),
+                           child: Container(
+                             height: 160,
+                             
+                                      
+                             child: Image.asset("assets/story.jpg",fit: BoxFit.cover,),
+                            ),
+                         ),
+                                 
+                        
+                       ),
+                     
+          
+                   Text("Mulla Nasiruddin",style: TextStyle(fontWeight: FontWeight.w500),)
+                 ],
+               );
+             },),
+           ),
+            
+            
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Akbar Story",style: TextStyle(fontSize:20),),
+
+                    MaterialButton(onPressed: () {
+                      
+                    },child: Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 222, 221, 221),
+                        borderRadius: BorderRadius.circular(5)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 7),
+                        child: Text("See All"),
+                      ),
+                    ),)
+                  ],
+                ),
+          
+          
+             
+          
+            Container(
+            height: 200,
+             child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
+               return   InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ReadPage(story: allstory[index]),));
+                },
+                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                   children: [
+                     Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Container(
+                         height: 150,
+                                  
+                         child: Image.asset("assets/akbar.jpg",fit: BoxFit.cover,),
+                        ),
+                     ),
+                     Text("Akbar Birbal",style: TextStyle(fontWeight: FontWeight.w500),)
+                   ],
+                 ),
+               );
+             },),
+           ),
+                
+           
+            ],
+          ),
         ),
       ),
     );
