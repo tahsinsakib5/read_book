@@ -4,6 +4,7 @@ import 'package:testprovider/englishLearnapp/bottomnavigation.dart';
 import 'package:testprovider/englishLearnapp/homepage.dart';
 import 'package:testprovider/englishLearnapp/pactis.dart';
 import 'package:testprovider/englishLearnapp/readpage.dart';
+import 'package:testprovider/englishLearnapp/them.dart';
 
 
 
@@ -23,9 +24,11 @@ import 'package:testprovider/search/search.dart';
 
 void main()async{
  await Hive.initFlutter();
+ await Hive.openBox("my_box");
+  await Hive.openBox("my_folder");
 
-  var box = await Hive.openBox("my_box");
- var boxtow=  await Hive.openBox("my_folder");
+   await Hive.openBox("lange");
+   
   runApp(MyApp());
 }
  class MyApp extends StatelessWidget {
@@ -33,14 +36,27 @@ void main()async{
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create:(context) => Countprovider(),child: MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:Scaffold(
-        body: Center(
-          child:Bontonnavigationread(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create:(context) => Countprovider()),
+        ChangeNotifierProvider(create:(context) => themchange(),)
+      ],
+      
+      
+      child:
+         MaterialApp(
+        debugShowCheckedModeBanner: false,
+   
+       darkTheme:ThemeData(
+        brightness: Brightness.dark
+       ),
+        home:Scaffold(
+          body: Center(
+            child:Bontonnavigationread(),
+          ),
         ),
-      ),
-    ),);
+      ));
+    
     
    
   }

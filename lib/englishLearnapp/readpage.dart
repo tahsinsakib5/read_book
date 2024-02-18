@@ -24,6 +24,26 @@ class ReadPage extends StatefulWidget {
    final FlutterTts flutterTts = FlutterTts();
    final GoogleTranslator translator = GoogleTranslator();
 
+
+   var languageShortNames = {
+  'Bangla': 'bn',
+  'Hindi': 'hi',
+  'English': 'en',
+  'Spanish': 'es',
+  'French': 'fr',
+  'German': 'de',
+  'Mandarin': 'zh',
+  'Arabic': 'ar',
+  'Russian': 'ru',
+  'Portuguese': 'pt'
+};
+
+var shortNames = languageShortNames.values.toList();
+var Names = languageShortNames.keys.toList();
+
+
+
+
   final mybox = Hive.box("my_box");
 
    void putdata (){
@@ -34,17 +54,15 @@ class ReadPage extends StatefulWidget {
      
    }
         var allword = Hive.box("my_folder");
-    void getdata (){
-   var data=  mybox.get(1);
-
-   print(data);
-
-     
-   }
+        var allleng = Hive.box("lange");
+    
 
 class _ReadPageState extends State<ReadPage> {
   int value = 17;
   String? outeope;
+  String? words;
+
+  String Language ="hi";
 
 
   Widget build(BuildContext context) {
@@ -90,9 +108,15 @@ class _ReadPageState extends State<ReadPage> {
                       children: widget.story.story.split(' ').map((word) {
                         return GestureDetector(
                           onTap: ()async{
-                          await  trans(word);
-                            
+                       
+                          setState(() {
+                            words=word;
+                          });
+                          allleng.put(1,"hi");
 
+                          await  trans(word,allleng.get(1));
+                            
+                               
               _showVocabularyAlert(context, word);
                          
                           },
@@ -132,14 +156,39 @@ class _ReadPageState extends State<ReadPage> {
                   }, icon:Icon(Icons.volume_up))
                 ],
               ),
-              Text(outeope ??""),
+              Row(
+                children: [
+                  Text(outeope ??""),
+
+                  DropdownButton(items:languageShortNames.entries.map((MapEntry <String,String> entry){
+                  return DropdownMenuItem(value:entry.value,child:Text(entry.key));
+                  }).toList(), onChanged: (value) {
+                      
+                      try{
+
+                       setState(() {
+                      allleng.put(1,value.toString());
+
+                      
+                      
+                    });
+
+                      }catch(e){
+
+                         trans(words!,allleng.get(1));
+                      }
+
+                    
+                  },)
+                ],
+              ),
             ],
           ),
           
           actions: [
             TextButton(
               onPressed: ()async{
-                getdata();
+              
                 Navigator.of(context).pop();
                
               },
@@ -187,8 +236,8 @@ class _ReadPageState extends State<ReadPage> {
   }
 
 
-    Future<void> trans(String text) async {
-    await translator.translate(text, to: "bn").then((value) {
+    Future<void> trans(String text, String lang) async {
+    await translator.translate(text, to:lang).then((value) {
       setState(() {
         outeope = value.text;
       });

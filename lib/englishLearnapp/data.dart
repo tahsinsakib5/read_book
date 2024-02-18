@@ -73,6 +73,14 @@ List allstory = [
   Perplexed by Mulla's behavior, the merchant approached him and asked, 'Mulla, why are you sitting on the floor when there are plenty of empty seats at the table?'
   Mulla smiled and replied, 'Oh dear friend, I was looking for the most comfortable seat in the house, and after careful consideration, I found that the floor suits me best!'
   The merchant and the guests burst into laughter, realizing the subtle message behind Mulla's humorous response.
-  Mu""")
+  Mu"""),
+
+  storys("Driving away tigers",
+  """Another night, Mullah Nasruddin was beating on a drum as though his very life depended on breaking the drum. The neighbors just couldn’t stand the din any longer and went out to investigate.
+  “Why are you beating the drum like a madman at this ungodly hour?” a neighbor remonstrated.
+  “I’m keeping wild tigers at bay,” Mullah replied.
+  “But Mullah,” protested the neighbors, “there are no wild tigers at all within a thousand miles of our village!”
+  “Works beautifully, doesn’t it?” Mullah smiled.""" ),
+
 
 ];

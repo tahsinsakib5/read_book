@@ -17,7 +17,7 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
     return SafeArea(
       child: Scaffold(
        
-        appBar: AppBar(backgroundColor: Colors.pink,),
+        appBar: AppBar(backgroundColor: Colors.pink,title:Text("Read English"),),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -67,7 +67,7 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Akbar Story",style: TextStyle(fontSize:20),),
+                    Text("Akbar Story",style: TextStyle(fontSize:18,fontWeight: FontWeight.w500),),
 
                     MaterialButton(onPressed: () {
                       
@@ -121,7 +121,7 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Akbar Story",style: TextStyle(fontSize:20),),
+                    Text("Akbar Story",style: TextStyle(fontSize:18,fontWeight: FontWeight.w500),),
 
                     MaterialButton(onPressed: () {
                       
