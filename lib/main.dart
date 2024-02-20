@@ -26,8 +26,8 @@ void main()async{
  await Hive.initFlutter();
  await Hive.openBox("my_box");
   await Hive.openBox("my_folder");
-
-   await Hive.openBox("lange");
+  await Hive.openBox('book_list');
+  await Hive.openBox("lange");
    
   runApp(MyApp());
 }

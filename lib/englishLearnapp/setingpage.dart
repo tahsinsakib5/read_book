@@ -23,11 +23,26 @@ class _SetingpageState extends State<Setingpage> {
         children: [
           ListTile(
             title: Text("dark mode"),
-            leading: Icon(Icons.dark_mode),
+            leading: Icon(Icons.format_size),
+
+            trailing: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(onPressed: () {
+                  
+                }, icon:Icon(Icons.add)),
+
+                IconButton(onPressed: () {
+                  
+                }, icon:Icon(Icons.remove)),
+
+                
+              ],
+            ),
           ),
 
           ListTile(
-            title: Text("font size"),
+            title: Text("Dark Mode"),
             leading: Icon(Icons.dark_mode),
             trailing: CupertinoSwitch(
               value: _switchValue,
@@ -70,10 +85,7 @@ class _SetingpageState extends State<Setingpage> {
                   },) ,
           ),
 
-          ListTile(
-            title: Text("dark mode"),
-            leading: Icon(Icons.dark_mode),
-          )
+         
         ],
       ),
     

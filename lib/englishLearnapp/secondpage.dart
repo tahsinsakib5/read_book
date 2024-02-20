@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:testprovider/englishLearnapp/allbook/bookone.dart';
+import 'package:testprovider/englishLearnapp/data.dart';
 import 'package:testprovider/englishLearnapp/readpage.dart';
 
 class Secondpagepageread extends StatefulWidget {
@@ -17,7 +19,7 @@ class _SecondpagepagereadState extends State<Secondpagepageread> {
         return ListTile(
           title: Text(widget.allstory[index].storyName),
           onTap:() {
-            Navigator.push(context,MaterialPageRoute(builder: (context) => ReadPage(story:widget.allstory[index]),));
+            Navigator.push(context,MaterialPageRoute(builder: (context) => ReadPage(story:allstory[index]),));
           },
         );
       },),

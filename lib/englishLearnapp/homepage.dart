@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:testprovider/englishLearnapp/allbook/allbook.dart';
 import 'package:testprovider/englishLearnapp/data.dart';
 import 'package:testprovider/englishLearnapp/readpage.dart';
 import 'package:testprovider/englishLearnapp/secondpage.dart';
-import 'package:testprovider/secondhomepage.dart';
+
 
 class HomePageReadBook extends StatefulWidget {
   const HomePageReadBook({super.key});
@@ -45,20 +46,25 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
                 ),
           
            Container(
-            height:180,
-             child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
-               return   InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Secondpagepageread(allstory: allstory)));
-                },
-                 child: Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Container(
-                     
-                              
-                     child: Image.asset("assets/molla.jpg",fit: BoxFit.cover,),
-                    ),
-                 ),
+            height:250,
+             child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:allbook.length,itemBuilder: (context, index) {
+               return   Column(
+                 children: [
+                   InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Secondpagepageread(allstory:allbook[index])));
+                    },
+                     child: Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Container(
+                         height: 200,
+                                  
+                         child: Image.asset("assets/book_two.png",fit: BoxFit.cover,),
+                        ),
+                     ),
+                   ),
+                   Text("you can do it",style: TextStyle(fontSize:17,fontWeight: FontWeight.w500))
+                 ],
                );
              },),
            ),
@@ -86,7 +92,7 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
           
           
             Container(
-            height: 200,
+            height: 250,
             
              child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
                return 
@@ -100,10 +106,11 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
                          child: Padding(
                            padding: const EdgeInsets.all(8.0),
                            child: Container(
-                             height: 160,
+                             height:200,
+                             
                              
                                       
-                             child: Image.asset("assets/story.jpg",fit: BoxFit.cover,),
+                             child: Image.asset("assets/book_one.png",fit: BoxFit.cover,),
                             ),
                          ),
                                  
@@ -111,38 +118,41 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
                        ),
                      
           
-                   Text("Mulla Nasiruddin",style: TextStyle(fontWeight: FontWeight.w500),)
+                   Text("Mulla Nasiruddin",style: TextStyle(fontSize:17,fontWeight: FontWeight.w500),)
                  ],
                );
              },),
            ),
             
             
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Akbar Story",style: TextStyle(fontSize:18,fontWeight: FontWeight.w500),),
-
-                    MaterialButton(onPressed: () {
-                      
-                    },child: Container(
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 222, 221, 221),
-                        borderRadius: BorderRadius.circular(5)
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 7),
-                        child: Text("See All"),
-                      ),
-                    ),)
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Akbar Story",style: TextStyle(fontSize:18,fontWeight: FontWeight.w500),),
+                  
+                      MaterialButton(onPressed: () {
+                        
+                      },child: Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 222, 221, 221),
+                          borderRadius: BorderRadius.circular(5)
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 7),
+                          child: Text("See All"),
+                        ),
+                      ),)
+                    ],
+                  ),
                 ),
           
           
              
           
             Container(
-            height: 200,
+            height: 250,
              child: ListView.builder(scrollDirection:Axis.horizontal,shrinkWrap: true,itemCount:6,itemBuilder: (context, index) {
                return   InkWell(
                 onTap: () {
@@ -154,9 +164,9 @@ class _HomePageReadBookState extends State<HomePageReadBook> {
                      Padding(
                        padding: const EdgeInsets.all(8.0),
                        child: Container(
-                         height: 150,
+                        height:200,
                                   
-                         child: Image.asset("assets/akbar.jpg",fit: BoxFit.cover,),
+                         child: Image.asset("assets/book_three.png",fit: BoxFit.cover,),
                         ),
                      ),
                      Text("Akbar Birbal",style: TextStyle(fontWeight: FontWeight.w500),)

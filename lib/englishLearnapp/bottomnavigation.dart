@@ -1,8 +1,10 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:testprovider/englishLearnapp/allvocavolary.dart';
 import 'package:testprovider/englishLearnapp/homepage.dart';
-import 'package:testprovider/englishLearnapp/stingpage.dart';
-import 'package:testprovider/englishLearnapp/vocavolary.dart';
+import 'package:testprovider/englishLearnapp/setingpage.dart';
+
 
 class Bontonnavigationread extends StatefulWidget {
    Bontonnavigationread({super.key});
@@ -12,17 +14,16 @@ class Bontonnavigationread extends StatefulWidget {
 }
 
 class _BontonnavigationreadState extends State<Bontonnavigationread> {
-  List pages =[HomePageReadBook(),Vocavolary(),allvocavolary(),Setingpage()];
+  List pages =[HomePageReadBook(),allvocavolary(),Setingpage()];
 
  int curentindex =0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       bottomNavigationBar: BottomNavigationBar(backgroundColor:Colors.pink,items: [
+       bottomNavigationBar: BottomNavigationBar(items: [
           BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.pink,),label:"Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.book,color: Colors.pink,),label: "Vocavolary"),
-          BottomNavigationBarItem(icon: Icon(Icons.book_outlined,color: Colors.pink,),label: "seting"),
+          BottomNavigationBarItem(icon: Icon(Icons.book_outlined,color: Colors.pink,),label: "vocavlary"),
           BottomNavigationBarItem(icon: Icon(Icons.book_outlined,color: Colors.pink,),label: "seting")
         ],
          onTap: (index) {
