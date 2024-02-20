@@ -1,6 +1,5 @@
-// ignore_for_file: unused_local_variable
-
 import 'package:flutter/material.dart';
+import 'package:popover/popover.dart';
 
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
@@ -13,7 +12,7 @@ import 'package:translator/translator.dart';
 import 'package:hive/hive.dart';
 
 class ReadPage extends StatefulWidget {
-  final storys story;
+  final Story story;
   ReadPage({super.key, required this.story});
 
   @override
@@ -38,7 +37,7 @@ var languageShortNames = {
 };
 
 var shortNames = languageShortNames.values.toList();
-var Names = languageShortNames.keys.toList();
+var names = languageShortNames.keys.toList();
 
 final mybox = Hive.box("my_box");
 
@@ -54,65 +53,49 @@ class _ReadPageState extends State<ReadPage> {
   String Language = "hi";
 
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        floatingActionButton: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            FloatingActionButton(
-              onPressed: () {
-                setState(() {
-                  value++;
-                });
-              },
-              child: Icon(Icons.add),
-            ),
-            FloatingActionButton(
-              onPressed: () {
-                setState(() {
-                  if (value > 17) {
-                    value--;
-                  }
-                });
-              },
-              child: Icon(Icons.remove),
-            ),
-            FloatingActionButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Setingpage(),
-                    ));
-              },
-              child: Icon(Icons.remove),
-            ),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Wrap(
-              spacing: 8.0,
-              children: widget.story.story.split(' ').map((word) {
-                return GestureDetector(
-                  onTap: () async {
-                    setState(() {
-                      words = word;
-                    });
-                    allleng.put(1, "bn");
-
-                    await trans(word, allleng.get(1));
-
-                    _showVocabularyAlert(context, word);
-                  },
-                  child: Text(
-                    word,
-                    style: TextStyle(fontSize: value.toDouble()),
-                  ),
-                );
-              }).toList(),
-            ),
+    return Scaffold(
+      floatingActionButton: const Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Column(
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.add),
+              Icon(Icons.remove),
+              Icon(Icons.remove),
+            ],
+          ),
+          // FloatingActionButton(
+          //   onPressed: () {
+          //     setState(() {
+          //       if (value > 17) {
+          //         value--;
+          //       }
+          //     });
+          //   },
+          //   child: Icon(Icons.remove),
+          // ),
+          // FloatingActionButton(
+          //   onPressed: () {
+          //     Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //           builder: (context) => Setingpage(),
+          //         ));
+          //   },
+          //   child: Icon(Icons.remove),
+          // ),
+        ],
+      ),
+      appBar: AppBar(title: const Text('Reading Page')),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Wrap(
+            spacing: 8.0,
+            children: widget.story.story.split(' ').map((word) {
+              return ReadPageWord(word: word);
+            }).toList(),
           ),
         ),
       ),
@@ -127,7 +110,7 @@ class _ReadPageState extends State<ReadPage> {
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -135,13 +118,13 @@ class _ReadPageState extends State<ReadPage> {
                 children: [
                   Text(
                     vocabulary,
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   ),
                   IconButton(
                       onPressed: () {
                         _speak(vocabulary);
                       },
-                      icon: Icon(Icons.volume_up))
+                      icon: const Icon(Icons.volume_up))
                 ],
               ),
               Row(
@@ -172,7 +155,7 @@ class _ReadPageState extends State<ReadPage> {
               onPressed: () async {
                 Navigator.of(context).pop();
               },
-              child: Text("Close"),
+              child: const Text("Close"),
             ),
             TextButton(
               onPressed: () async {
@@ -244,5 +227,52 @@ class _ReadPageState extends State<ReadPage> {
     await flutterTts.setSpeechRate(0.5);
 
     await flutterTts.speak(text);
+  }
+}
+
+class ReadPageWord extends StatelessWidget {
+  const ReadPageWord({
+    super.key,
+    required this.word,
+  });
+
+  final String word;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        // setState(() {
+        //   words = word;
+        // });
+        // allleng.put(1, "bn");
+
+        // await trans(word, allleng.get(1));
+
+        showPopover(
+          context: context,
+          bodyBuilder: (context) => Center(
+            child: Container(
+              color: Colors.amber,
+              width: 50,
+              height: 50,
+              // child: Text('Bangladesh'),
+            ),
+          ),
+          onPop: () => print('Popover was popped!'),
+          // direction: PopoverDirection.bottom,
+          width: 200,
+          height: 400,
+          arrowHeight: 15,
+          arrowWidth: 30,
+        );
+
+        // _showVocabularyAlert(context, word);
+      },
+      child: Text(
+        word,
+        // style: TextStyle(fontSize: value.toDouble()),
+      ),
+    );
   }
 }

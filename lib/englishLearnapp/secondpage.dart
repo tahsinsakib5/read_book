@@ -15,14 +15,22 @@ class _SecondpagepagereadState extends State<Secondpagepageread> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(itemCount:widget.allstory.length,itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(widget.allstory[index].storyName),
-          onTap:() {
-            Navigator.push(context,MaterialPageRoute(builder: (context) => ReadPage(story:allstory[index]),));
-          },
-        );
-      },),
+      body: ListView.builder(
+        itemCount: widget.allstory.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(widget.allstory[index].storyName),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ReadPage(story: widget.allstory[index]),
+                  ));
+            },
+          );
+        },
+      ),
     );
   }
 }
